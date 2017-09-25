@@ -13,17 +13,7 @@ const NativeLogs = {};
 
 NativeLogs.log = (logLevel, logTag, logMessage) => {
     if (__DEV__) {
-        if (logLevel === LOG_LEVEL.INFO) {
-            console.info(logTag, logMessage);
-        } else if (logLevel === LOG_LEVEL.WARN) {
-            console.warn(logTag, logMessage);
-        }
-       else if (logLevel === LOG_LEVEL.ERROR) {
-            console.error(logTag, logMessage);
-        }
-        else{
              console.info(logTag, logMessage);
-        }
     }
     switch (logLevel) {
         case LOG_LEVEL.INFO:
