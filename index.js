@@ -12,6 +12,10 @@ export const LOG_LEVEL = {
 const NativeLogs = {};
 
 NativeLogs.log = (logLevel, logTag, logMessage) => {
+
+    if(!logMessage){
+        return
+    }
     if (__DEV__) {
              console.info(logTag, logMessage);
     }
