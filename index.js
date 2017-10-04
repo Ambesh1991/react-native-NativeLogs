@@ -1,5 +1,5 @@
 
-import { NativeModules } from 'react-native';
+import { NativeModules ,Platform} from 'react-native';
 
 const { RNReactNativeNativeLogs } = NativeModules;
 
@@ -18,6 +18,10 @@ NativeLogs.log = (logLevel, logTag, logMessage) => {
     }
     if (__DEV__) {
              console.info(logTag, logMessage);
+    }
+    //Added temp check for iOS
+    if(Platform.OS==='ios'){
+        return;
     }
     switch (logLevel) {
         case LOG_LEVEL.INFO:
