@@ -9,6 +9,22 @@ export const LOG_LEVEL = {
     VERBOSE: 'verbose',
     WARN: 'warn'
 }
+function setErrorPrototype(){
+	var config = {
+  configurable: true,
+  value: function() {
+    var alt = {};
+    var storeKey = function(key) {
+      alt[key] = this[key];
+    };
+    Object.getOwnPropertyNames(this).forEach(storeKey, this);
+    return alt;
+  }
+};
+Object.defineProperty(Error.prototype, 'toJSON', config);
+}
+setErrorPrototype()
+
 const NativeLogs = {};
 
 NativeLogs.log = (logLevel, logTag, logMessage) => {
